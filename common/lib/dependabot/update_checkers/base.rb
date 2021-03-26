@@ -298,7 +298,7 @@ module Dependabot
       end
 
       def ignore_reqs
-        ignored_versions.map { |req| requirement_class.new(req.split(",")) }
+        ignored_versions.flat_map { |req| requirement_class.requirements_array(req) }
       end
     end
   end
